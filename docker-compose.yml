@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  hotel_app:
+    image: 'springappimage'
+    build:
+      context: .
+    container_name: hotel_app
+    depends_on:
+      - hoteldb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=n11
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://hoteldb:5432/hotelbase
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=n11
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "9090:9090"
+
+
+  hoteldb:
+    image: postgresimage
+    container_name: hoteldb
+    environment:
+     - POSTGRES_DB hotelbase
+     - POSTGRES_USER postgres
+     - POSTGRES_PASSWORD n11
+    ports:
+      - "5432:5432"
