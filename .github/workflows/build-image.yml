@@ -22,7 +22,10 @@ jobs:
          username: ${{ secrets.DOCKERHUB_USERNAME }}
          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-   
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        path: target/*.jar
     
     - name: Build and push DockerFile
       uses: docker/build-push-action@v2
