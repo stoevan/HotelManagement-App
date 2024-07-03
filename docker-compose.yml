@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   hotel_app:
-    image: 'springappimage'
+    image: 'springimage'
     build:
       context: .
     container_name: hotel_app
